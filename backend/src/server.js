@@ -12,13 +12,19 @@ import chatRoutes from "./routes/chat.route.js";
 import { connectDB } from "./lib/db.js";
 
 const app = express();
+
+const allowedOrigins = [
+  "http://localhost:5173", 
+  "https://linkora-psi.vercel.app" 
+];
+
 const PORT = process.env.PORT;
 
 const __dirname = path.resolve();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true, // allow frontend to send cookies
   })
 );
